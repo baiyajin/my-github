@@ -1,5 +1,8 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+    <!-- 滚动进度条 -->
+    <ScrollProgress />
+    
     <!-- 导航栏 -->
     <NavBar />
     
@@ -34,5 +37,6 @@ import TechStackSection from './components/TechStackSection.vue'
 import WasmDemoSection from './components/WasmDemoSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import Footer from './components/Footer.vue'
+import ScrollProgress from './components/ScrollProgress.vue'
 </script>
 
