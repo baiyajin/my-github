@@ -76,19 +76,12 @@ const props = defineProps({
 
 const cardRef = ref(null)
 const isFlipped = ref(false)
-const mouseX = ref(0)
-const mouseY = ref(0)
+const mouseX = ref(0.5)
+const mouseY = ref(0.5)
 const ripple = ref(false)
 const rippleStyle = ref({})
+const parallaxOffset = ref(0)
 
-// 卡片样式（3D变换）
-const cardStyle = computed(() => {
-  const rotateX = (mouseY.value - 0.5) * 10
-  const rotateY = (mouseX.value - 0.5) * -10
-  return {
-    transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${isFlipped.value ? 1.05 : 1})`,
-  }
-})
 
 // 内部翻转样式
 const innerStyle = computed(() => {
@@ -135,6 +128,7 @@ const handleClick = (event) => {
 
 // 视差滚动效果
 let scrollY = 0
+
 const handleScroll = () => {
   if (!cardRef.value) return
   scrollY = window.scrollY
@@ -144,13 +138,24 @@ const handleScroll = () => {
   const scrollProgress = (scrollY + windowHeight - elementTop) / (windowHeight + rect.height)
   
   if (scrollProgress > 0 && scrollProgress < 1) {
-    const parallaxY = (scrollProgress - 0.5) * 50
-    cardRef.value.style.transform += ` translateY(${parallaxY}px)`
+    parallaxOffset.value = (scrollProgress - 0.5) * 30
+  } else {
+    parallaxOffset.value = 0
   }
 }
 
+// 卡片样式（3D变换 + 视差滚动）
+const cardStyle = computed(() => {
+  const rotateX = (mouseY.value - 0.5) * 10
+  const rotateY = (mouseX.value - 0.5) * -10
+  return {
+    transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${parallaxOffset.value}px) scale(${isFlipped.value ? 1.05 : 1})`,
+  }
+})
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
+  handleScroll() // 初始计算
 })
 
 onUnmounted(() => {
@@ -223,3 +228,4 @@ onUnmounted(() => {
               0 0 40px rgba(139, 92, 246, 0.2);
 }
 </style>
+
