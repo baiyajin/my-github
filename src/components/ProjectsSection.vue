@@ -1,33 +1,44 @@
 <template>
-  <section id="projects" class="py-20 bg-white/50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-        作品展示
-      </h2>
-      <p class="text-center text-gray-600 mb-12 text-lg">
-        以下是我的一些精选项目，展示了现代 Web 技术的应用
-      </p>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <ProjectCard 
-          v-for="(project, index) in projects" 
-          :key="project.id"
-          :title="project.title"
-          :description="project.description"
-          :tech="project.tech"
-          :image="project.image"
-          :link="project.link"
-          :style="{ animationDelay: `${index * 0.1}s` }"
-          class="fade-in-up"
-        />
+  <ScrollReveal direction="up" :distance="50">
+    <section id="projects" class="py-20 bg-white/50">
+      <div class="container mx-auto px-4">
+        <ScrollReveal direction="up" :distance="30" :delay="0">
+          <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            作品展示
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal direction="up" :distance="30" :delay="100">
+          <p class="text-center text-gray-600 mb-12 text-lg">
+            以下是我的一些精选项目，展示了现代 Web 技术的应用
+          </p>
+        </ScrollReveal>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ScrollReveal 
+            v-for="(project, index) in projects" 
+            :key="project.id"
+            direction="up"
+            :distance="50"
+            :delay="index * 100"
+          >
+            <ProjectCard 
+              :title="project.title"
+              :description="project.description"
+              :tech="project.tech"
+              :image="project.image"
+              :link="project.link"
+            />
+          </ScrollReveal>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </ScrollReveal>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import ProjectCard from './ProjectCard.vue'
+import ScrollReveal from './ScrollReveal.vue'
 
 const projects = ref([
   {
@@ -81,20 +92,4 @@ const projects = ref([
 ])
 </script>
 
-<style scoped>
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-up {
-  animation: fadeInUp 0.6s ease-out both;
-}
-</style>
 
