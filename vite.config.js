@@ -5,7 +5,13 @@ import UnoCSS from '@unocss/vite'
 export default defineConfig({
   base: '/my-github/',
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: () => false,
+        },
+      },
+    }),
     UnoCSS(),
   ],
   build: {

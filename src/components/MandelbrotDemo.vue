@@ -83,9 +83,6 @@ function render() {
   
   ctx.putImageData(imageData, 0, 0)
   
-  const endTime = performance.now()
-  console.log(`渲染时间: ${(endTime - startTime).toFixed(2)}ms`)
-  
   if (isRendering.value) {
     animationId = requestAnimationFrame(render)
   }

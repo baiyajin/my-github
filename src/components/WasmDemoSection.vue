@@ -291,9 +291,6 @@ const applyFilter = (filter) => {
       break
   }
   
-  const endTime = performance.now()
-  console.log(`滤镜处理时间: ${(endTime - startTime).toFixed(2)}ms`)
-  
   ctx.putImageData(imageData, 0, 0)
 }
 
