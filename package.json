@@ -8,14 +8,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.6.0",
-    "three": "latest"
+    "vue": "3.6.0-alpha.3",
+    "three": "^0.169.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "latest",
-    "@unocss/vite": "latest",
-    "unocss": "latest",
-    "vite": "latest"
+    "@vitejs/plugin-vue": "^5.2.0",
+    "@unocss/vite": "66.5.6",
+    "unocss": "66.5.6",
+    "vite": "^7.0.0"
   }
 }
 
