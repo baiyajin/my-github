@@ -10,13 +10,15 @@
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <ProjectCard 
-          v-for="project in projects" 
+          v-for="(project, index) in projects" 
           :key="project.id"
           :title="project.title"
           :description="project.description"
           :tech="project.tech"
           :image="project.image"
           :link="project.link"
+          :style="{ animationDelay: `${index * 0.1}s` }"
+          class="fade-in-up"
         />
       </div>
     </div>
@@ -78,4 +80,21 @@ const projects = ref([
   },
 ])
 </script>
+
+<style scoped>
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out both;
+}
+</style>
 
