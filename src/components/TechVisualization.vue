@@ -31,7 +31,7 @@ import * as THREE from 'three'
 const container = ref(null)
 const selectedTech = ref(null)
 let scene, camera, renderer, techNodes = [], lines = [], animationId
-let raycaster, mouse
+let raycaster, mouse, handleClick
 
 const techData = [
   { name: 'Vue 3', position: [0, 2, 0], color: 0x42b883, description: '渐进式 JavaScript 框架，用于构建用户界面' },
