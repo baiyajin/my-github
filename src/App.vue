@@ -1,5 +1,11 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
+    <!-- 加载屏幕 -->
+    <LoadingScreen />
+    
+    <!-- 自定义光标 -->
+    <CustomCursor />
+    
     <!-- 滚动进度条 -->
     <ScrollProgress />
     
@@ -38,5 +44,7 @@ import WasmDemoSection from './components/WasmDemoSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import Footer from './components/Footer.vue'
 import ScrollProgress from './components/ScrollProgress.vue'
+import CustomCursor from './components/CustomCursor.vue'
+import LoadingScreen from './components/LoadingScreen.vue'
 </script>
 
